@@ -13,11 +13,14 @@ async def sendMessage(message, userMessage, dm):
         e = e
 
 def runBot():
-    import os
     global lastMessage
+    import os
     TOKEN = os.environ.get('TOKEN')
-
-    client = discord.Client()
+     
+    intents = discord.Intents.default()
+    intents.message_content = True
+    client = discord.Client(intents=intents)
+    # client = discord.Client()
 
     # dont change on_ready - thats the way it works
     @client.event
