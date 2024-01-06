@@ -16,10 +16,7 @@ def runBot():
     global lastMessage
     with open('token.txt', 'r') as f:
         TOKEN = f.read().strip()
-     
-    # intents = discord.Intents.default()
-    # intents.message_content = True
-    # client = discord.Client(intents=intents)
+
     client = discord.Client()
 
     # dont change on_ready - thats the way it works
