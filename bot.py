@@ -14,10 +14,10 @@ async def sendMessage(message, userMessage, dm):
 
 def runBot():
     global lastMessage
+    # import base64
     import os
-    TOKEN = os.environ.get('TOKEN')
-
-    print(TOKEN)
+    TOKEN = os.environ['TOKEN']
+    
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
