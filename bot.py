@@ -13,9 +13,9 @@ async def sendMessage(message, userMessage, dm):
         e = e
 
 def runBot():
+    import os
     global lastMessage
-    with open('token.txt', 'r') as f:
-        TOKEN = f.read().strip()
+    TOKEN = os.environ.get('TOKEN')
 
     client = discord.Client()
 
