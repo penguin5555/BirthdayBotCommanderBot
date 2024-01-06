@@ -15,14 +15,18 @@ async def sendMessage(message, userMessage, dm):
 def runBot():
     global lastMessage
     import base64
-
+    # to bypass discord finding the bot's token
     TOKEN = base64.b64decode('TVRFNU16QXhOakkwTlRreE9Ea3dNREkyTlEuR1JCTkZrLnRtSThFU1JBcDZBcjdyMk5qSl9KM2EyclQwTjZPemdiaG9pTGxr').decode('utf-8')
-    print(TOKEN)
 
-    intents = discord.Intents.default()
-    intents.message_content = True
-    client = discord.Client(intents=intents)
-    # client = discord.Client()
+    local = False
+    if not local:
+        # use this when deployed
+        intents = discord.Intents.default()
+        intents.message_content = True
+        client = discord.Client(intents=intents)
+    else:
+        # on local use this
+        client = discord.Client()
 
     # dont change on_ready - thats the way it works
     @client.event
@@ -45,7 +49,11 @@ def runBot():
         else:
             global lastMessage
             # the next bday data
-            lastMessage = (await client.get_channel(1193010614235299902).history(limit=1).flatten())[0].content
+            async for message in client.get_channel(1193010614235299902).history(limit=1):
+                # print(message.content)
+                lastMessage = message.content
+                break
+            # lastMessage = (await client.get_channel(1193010614235299902).history(limit=1).flatten())[0].content
             
             
 
