@@ -16,7 +16,8 @@ def runBot():
     global lastMessage
     import os
     TOKEN = os.environ.get('TOKEN')
-     
+
+    print(TOKEN)
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
