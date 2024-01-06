@@ -14,14 +14,15 @@ async def sendMessage(message, userMessage, dm):
 
 def runBot():
     global lastMessage
-    # import base64
-    import os
-    TOKEN = os.environ['TOKEN']
-    
-    intents = discord.Intents.default()
-    intents.message_content = True
-    client = discord.Client(intents=intents)
-    # client = discord.Client()
+    import base64
+
+    TOKEN = base64.b64decode('TVRFNU16QXhOakkwTlRreE9Ea3dNREkyTlEuR1JCTkZrLnRtSThFU1JBcDZBcjdyMk5qSl9KM2EyclQwTjZPemdiaG9pTGxr').decode('utf-8')
+    print(TOKEN)
+
+    # intents = discord.Intents.default()
+    # intents.message_content = True
+    # client = discord.Client(intents=intents)
+    client = discord.Client()
 
     # dont change on_ready - thats the way it works
     @client.event
